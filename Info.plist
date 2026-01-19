@@ -1,0 +1,5 @@
+<key>FirebaseAppDelegateProxyEnabled</key>
+<true/>
+
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-XXXX~YYYY</string>
