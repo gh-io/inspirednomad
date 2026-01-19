@@ -1,0 +1,18 @@
+...
+const trpcRouter = t.router({
+  get: t.procedure.input(z.number()).output(Cat).query((opts) => {
+    const { input } = opts;
+    const foundCat = cats.find((cat => cat.id === input));
+    if (!foundCat) {
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message: `could not find cat with id ${input}`,
+      });
+    }
+    return foundCat;
+  }),
+  list: t.procedure.output(Cats).query(() => {
+    return cats;
+  }),
+})
+...
