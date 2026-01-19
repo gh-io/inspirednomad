@@ -4,7 +4,7 @@ class AIService {
     static let shared = AIService()
 
     func ask(prompt: String) async -> String {
-        let url = URL(string: "https://your-api.com/ai")!
+        let url = URL(string: "https://localhost:8080/ai")!
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
         req.httpBody = try? JSONEncoder().encode(["text": prompt])
