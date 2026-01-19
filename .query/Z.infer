@@ -1,0 +1,28 @@
+...
+const trpcRouter = t.router({
+  ...
+  create: t.procedure
+    .input(
+      z.object({ name: z.string().max(50) }),
+    )
+    .mutation((opts) => {
+      const { input } = opts;
+      const newCat: Cat = { id: newId(), name: input.name };
+      cats.push(newCat)
+      return newCat
+    }),
+  delete: t.procedure.output(z.string()).input(z.object({ id: z.number() })).mutation((opts) => {
+    const { input } = opts;
+    cats = cats.filter(cat => cat.id !== input.id);
+    return "success"
+  })
+})
+
+function newId(): number {
+    return Math.floor(Math.random() * 10000)
+}
+
+...
+
+export type TRPCRouter = typeof trpcRouter;
+export default trpcRouter;
