@@ -1,0 +1,7 @@
+$ curl -X POST  "http://localhost:8080/cat/delete" -d '{"id": 7216}' -H 'content-type: application/json'
+
+{"id":null,"result":{"type":"data","data":"success"}}
+
+$ curl "http://localhost:8080/cat/list"
+
+{"id":null,"result":{"type":"data","data":[]}}
